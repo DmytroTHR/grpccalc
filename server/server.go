@@ -1,6 +1,6 @@
 package main
 
-import pb "github.com/Clement-Jean/grpc-go-course/calculator/proto"
+import pb "github.com/DmytroTHR/grpccalc/proto"
 
 type Server struct {
 	pb.CalculatorServiceServer

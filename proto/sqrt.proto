@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package calculator;
-option go_package = "github.com/Clement-Jean/grpc-go-course/calculator/proto";
+package proto;
+option go_package = "github.com/DmytroTHR/grpccalc/proto";
 
 message SqrtRequest {
   int32 number = 1; // could be uint32 number = 1;

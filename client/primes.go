@@ -5,7 +5,7 @@ import (
 	"io"
 	"log"
 
-	pb "github.com/Clement-Jean/grpc-go-course/calculator/proto"
+	pb "github.com/DmytroTHR/grpccalc/proto"
 )
 
 func doPrimes(c pb.CalculatorServiceClient) {
