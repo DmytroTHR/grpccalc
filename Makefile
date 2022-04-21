@@ -28,4 +28,7 @@ run-client: build-client
 
 run-server:	build-server
 	./${BIN_DIR}/${SERVER_DIR}
+
+test-all:
+	go test ./... --count=1
 	
