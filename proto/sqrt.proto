@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package proto;
+package grpccalc;
 option go_package = "github.com/DmytroTHR/grpccalc/proto";
 
 message SqrtRequest {
