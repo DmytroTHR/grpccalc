@@ -12,10 +12,10 @@ cleanprotos:
 protogen:
 	protoc -I ${PROTO_DIR} --go_opt=module=${PACKAGE} --go_out=. --go-grpc_opt=module=${PACKAGE} --go-grpc_out=. ${PROTO_DIR}/*.proto
 
-prebuild: protogen
+prebuild: cleanprotos protogen
 	go mod tidy
 
-build-all: prebuild build-server build-client
+build-all: build-server build-client
 
 build-server: 
 	CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o ${BIN_DIR}/${SERVER_DIR} ./${SERVER_DIR}
