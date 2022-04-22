@@ -12,7 +12,7 @@ cleanprotos:
 protogen:
 	protoc -I ${PROTO_DIR} --go_opt=module=${PACKAGE} --go_out=. --go-grpc_opt=module=${PACKAGE} --go-grpc_out=. ${PROTO_DIR}/*.proto
 
-prebuild: cleanprotos protogen
+prebuild: protogen
 	go mod tidy
 
 build-all: build-server build-client
