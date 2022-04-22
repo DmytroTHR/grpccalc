@@ -1,6 +1,6 @@
 apiVersion: v2
-name: calc-client
-description: Client part
+name: calc-server
+description: Server part
 
 # A chart can be either an 'application' or a 'library' chart.
 #

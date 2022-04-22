@@ -1,0 +1,13 @@
+def version = "1.0.${env.BUILD_NUMBER}"
+
+pipeline{
+    agent any
+
+    stages{
+        stage('Helm package create'){
+            steps{
+                sh 'echo "Hello helm!"'
+            }
+        }
+    }
+}
