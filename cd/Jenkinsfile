@@ -1,4 +1,6 @@
 def version = "1.0.${env.BUILD_NUMBER}"
+def clientPath = "/cd/helm/client"
+def serverPath = "/cd/helm/server"
 
 pipeline{
     agent any
@@ -6,8 +8,8 @@ pipeline{
     stages{
         stage('Helm linter'){
             steps{
-                sh 'helm lint /helm/client'
-                sh 'helm lint /helm/server'
+                sh 'helm lint $clientPath'
+                sh 'helm lint $serverPath'
             }
         }
     }
