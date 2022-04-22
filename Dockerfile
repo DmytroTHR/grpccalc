@@ -1,8 +1,8 @@
 FROM golang:1.17 as builder
 WORKDIR /go/src
 COPY . .
-RUN make test-all
 RUN make build-all
+RUN make test-all
 
 FROM alpine as calc_server
 COPY --from=builder /go/src/bin/server /usr/bin
