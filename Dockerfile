@@ -1,9 +1,9 @@
 FROM golang:1.17 as builder
 WORKDIR /go/src
 COPY . .
-RUN apt-get update && apt-get install protobuf-compiler -y && go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-RUN export PATH=$PATH:/home/$USER/go/bin
-RUN echo $PATH && ls -la /home/$USER/go/bin
+RUN apt-get update && apt-get install protobuf-compiler -y 
+RUN go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest 
+RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@vlatest
 RUN make build-all
 RUN make test-all
 
