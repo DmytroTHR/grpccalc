@@ -3,7 +3,7 @@ WORKDIR /go/src
 COPY . .
 RUN apt-get update && apt-get install protobuf-compiler -y 
 RUN go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest 
-RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@vlatest
+RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 RUN make build-all
 RUN make test-all
 
