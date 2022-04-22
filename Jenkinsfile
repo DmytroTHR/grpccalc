@@ -4,8 +4,9 @@ pipeline{
     stages{
         stage('Build docker image'){
             steps{
-                sh 'docker build . -t calc_client --target calc_client'
-                sh 'docker build . -t calc_server --target calc_server'
+                //sh 'docker build . -t calc_client --target calc_client'
+                //sh 'docker build . -t calc_server --target calc_server'
+                sh 'make docker-build'
             }
         }
     }
