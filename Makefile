@@ -18,10 +18,10 @@ prebuild:
 build-all: prebuild build-server build-client
 
 build-server: 
-	go build -o ${BIN_DIR}/${SERVER_DIR} ./${SERVER_DIR}
+	CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o ${BIN_DIR}/${SERVER_DIR} ./${SERVER_DIR}
 
 build-client: 	
-	go build -o ${BIN_DIR}/${CLIENT_DIR} ./${CLIENT_DIR}
+	CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o ${BIN_DIR}/${CLIENT_DIR} ./${CLIENT_DIR}
 
 run-client: build-client
 	./${BIN_DIR}/${CLIENT_DIR}
@@ -31,4 +31,8 @@ run-server:	build-server
 
 test-all:
 	go test ./... --count=1
+
+docker-build:
+	docker build . -t calc_client --target calc_client 
+	docker build . -t calc_server --target calc_server
 	
