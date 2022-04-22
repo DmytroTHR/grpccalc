@@ -4,9 +4,10 @@ pipeline{
     agent any
 
     stages{
-        stage('Helm package create'){
+        stage('Helm linter'){
             steps{
-                sh 'echo "Hello helm!"'
+                sh 'helm lint /helm/client'
+                sh 'helm lint /helm/server'
             }
         }
     }
