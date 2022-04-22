@@ -1,0 +1,24 @@
+def version = "1.0.${env.BUILD_NUMBER}"
+
+pipeline{
+    agent any
+
+    stages{
+        stage('Build docker image'){
+            steps{
+                sh 'make docker-build'
+            }
+        }
+        stage('Push docker image'){
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'dockersecret', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh "docker login -u ${USERNAME} -p ${PASSWORD}"
+                }
+                sh "docker tag calc_client dmytrothr/calc_client:${version}"
+                sh "docker tag calc_server dmytrothr/calc_server:${version}"
+                sh "docker push dmytrothr/calc_client:${version}"
+                sh "docker push dmytrothr/calc_server:${version}"
+            }
+        }
+    }
+}
