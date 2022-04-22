@@ -8,8 +8,8 @@ pipeline{
     stages{
         stage('Helm linter'){
             steps{
-                sh 'helm lint $clientPath'
-                sh 'helm lint $serverPath'
+                sh "helm lint ${clientPath}"
+                sh "helm lint ${serverPath}"
             }
         }
     }
