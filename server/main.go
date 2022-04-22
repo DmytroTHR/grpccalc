@@ -13,7 +13,7 @@ import (
 	"google.golang.org/grpc/reflection"
 )
 
-var addr string = "0.0.0.0:50051"
+var addr string = ":9999"
 
 func main() {
 	lis, err := net.Listen("tcp", addr)
