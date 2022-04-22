@@ -13,6 +13,7 @@ protogen:
 	protoc -I ${PROTO_DIR} --go_opt=module=${PACKAGE} --go_out=. --go-grpc_opt=module=${PACKAGE} --go-grpc_out=. ${PROTO_DIR}/*.proto
 
 prebuild:
+	protogen
 	go mod tidy
 
 build-all: prebuild build-server build-client
