@@ -1,0 +1,26 @@
+# Default values for servpod.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+nameOverride: ""
+fullnameOverride: ""
+
+image:
+  repository: dmytrothr/calc_client
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+service:
+  type: ClusterIP
+  port: 9999
+
+env:
+  name: CALCSERVER
+  value: calc_server  
+
+app:
+  name: "calc_client"
+  version: "1.0.0"
+  description: "Client part"
