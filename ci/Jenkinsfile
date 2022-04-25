@@ -1,5 +1,6 @@
-env.WORKSPACE = pwd()
-def version = readFile "${env.WORKSPACE}/version.txt"
+node {
+    def version = readFile "version.txt"
+}
 
 pipeline{
     agent any
