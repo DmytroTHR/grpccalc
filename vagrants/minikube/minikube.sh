@@ -19,5 +19,6 @@ apt-get full-upgrade -y
 
 echo ">>>>>>>>STARTING_MINIKUBE>>>>>>>>"
 apt-get install conntrack -y
-echo "minikube start --driver none --embed-certs --nodes 2 --apiserver-ips 192.168.56.111 --delete-on-failure" > /etc/rc.local
+echo "#!/bin/bash" > /etc/rc.local
+echo "minikube start --driver none --embed-certs --nodes 2 --apiserver-ips 192.168.56.111 --delete-on-failure" >> /etc/rc.local
 echo "exit 0" >> /etc/rc.local
