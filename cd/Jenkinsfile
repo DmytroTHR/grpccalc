@@ -4,6 +4,10 @@ def serverPath = "cd/helm/server"
 pipeline{
     agent any
 
+    environment {
+        version = readFile 'version.txt'
+    }
+
     stages{
         stage('Helm linter'){
             steps{
@@ -14,9 +18,8 @@ pipeline{
 
         stage('Helm install'){
             steps{
-                sh "version=`cat version.txt`"
-                sh "helm install ${clientPath} --name client --set image.tag=${version}"
-                sh "helm install ${serverPath} --name server --set image.tag=${version}"
+                sh "helm install ${clientPath} --name calc-client --set image.tag=$version"
+                sh "helm install ${serverPath} --name calc-server --set image.tag=$version"
             }
         }
     }

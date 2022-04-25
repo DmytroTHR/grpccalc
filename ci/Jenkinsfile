@@ -1,6 +1,10 @@
 pipeline{
     agent any
 
+    environment {
+        version = readFile 'version.txt'
+    }
+
     stages{
         stage('Build docker image'){
             steps{
@@ -12,11 +16,10 @@ pipeline{
                 withCredentials([usernamePassword(credentialsId: 'dockersecret', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh "docker login -u ${USERNAME} -p ${PASSWORD}"
                 }
-                sh "version=`cat version.txt`"
-                sh "docker tag calc_client dmytrothr/calc_client:${version}"
-                sh "docker tag calc_server dmytrothr/calc_server:${version}"
-                sh "docker push dmytrothr/calc_client:${version}"
-                sh "docker push dmytrothr/calc_server:${version}"
+                sh "docker tag calc_client dmytrothr/calc_client:$version"
+                sh "docker tag calc_server dmytrothr/calc_server:$version"
+                sh "docker push dmytrothr/calc_client:$version"
+                sh "docker push dmytrothr/calc_server:$version"
             }
         }
     }
