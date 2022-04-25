@@ -1,4 +1,5 @@
-def version = "1.0.${env.BUILD_NUMBER}"
+env.WORKSPACE = pwd()
+def version = readFile "${env.WORKSPACE}/version.txt"
 
 pipeline{
     agent any
