@@ -4,3 +4,4 @@ go.sum
 !.gitignore
 /bin
 *.log
+/fluentbit
