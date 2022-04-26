@@ -18,8 +18,8 @@ pipeline{
 
         stage('Helm install'){
             steps{
-                sh "helm install calc-client ${clientPath} --set image.tag=$version"
-                sh "helm install calc-server ${serverPath} --set image.tag=$version"
+                sh "helm update --install calc-client ${clientPath} --set image.tag=$version"
+                sh "helm update --install calc-server ${serverPath} --set image.tag=$version"
             }
         }
     }
