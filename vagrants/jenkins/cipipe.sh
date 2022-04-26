@@ -24,9 +24,6 @@ yum install unzip -y
 test -e gradle-7.4.2-bin.zip || curl https://downloads.gradle-dn.com/distributions/gradle-7.4.2-bin.zip -O
 test -d /opt/gradle || mkdir /opt/gradle
 unzip -d /opt/gradle gradle-7.4.2-bin.zip
-echo "GRADLE_HOME=/opt/gradle/gradle-7.4.2" >> /etc/.bashrc
-echo "export GRADLE_HOME" >> /etc/.bashrc
-echo "PATH=$PATH:$GRADLE_HOME/bin" >> /etc/.bashrc
 echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 
 #Git install
@@ -50,8 +47,13 @@ echo "=========HELM============================"
 test -e get_helm.sh || curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
 ./get_helm.sh
-echo "PATH=$PATH:/usr/local/bin" >> /etc/.bashrc
 echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 
 yum upgrade
-source /etc/.bashrc
+
+#env variables install
+touch /etc/profile.d/vagrantenv.sh
+echo "#!/bin/sh" > /etc/profile.d/vagrantenv.sh
+echo "export GRADLE_HOME=/opt/gradle/gradle-7.4.2" >> /etc/profile.d/vagrantenv.sh
+echo "export PATH=$PATH:$GRADLE_HOME/bin:/usr/local/bin" >> /etc/profile.d/vagrantenv.sh
+source /etc/profile
