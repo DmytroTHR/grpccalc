@@ -17,9 +17,9 @@ service:
   port: 9999
 
 resources:
-  request:
+  requests:
     cpu: 200m
     memory: '200Mi'
-  limit:
+  limits:
     cpu: 500m
     memory: '500Mi'
